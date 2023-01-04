@@ -46,7 +46,7 @@ function Playlists(props) {
                         }}>FILTER</button>
                     </div>
             } ) : 
-            <div className="circle">loading</div>}
+            <div className="circle"></div>}
         </div>
     )
 }

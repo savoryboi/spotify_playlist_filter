@@ -93,7 +93,8 @@ function App () {
           </div>
         }
         {token ? 
-        <button id='logoutBtn' onClick={logout}>LOGOUT</button> :
+        <button id='logoutBtn' onClick={logout}>LOGOUT</button> 
+        :
         <div></div>
         
       }
