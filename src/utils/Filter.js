@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 
 async function Filter(id, token, user_id, playlist_name) {
 
-    const filteredBtn = document.getElementById(id + '_btn')
-    filteredBtn.classList.add('been_filtered');
-    filteredBtn.innerText = 'DONE'
-    // const [filtering, setFiltering] = useState(true)
+    const filterBtn = document.getElementById(id + '_btn');
+    window.localStorage.setItem('spotlessified', id)
+    filterBtn.classList.add('been_filtered');
+    filterBtn.innerText = `DONE!`;
 
     // fetch chosen playlist using the playlist id
     const response = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
@@ -55,6 +55,10 @@ async function Filter(id, token, user_id, playlist_name) {
 
     // create an array containing all the URIs for tracks that will be added to new clean playlist
     const cleanTracksUris = filtered.map(track => track.uri);
+
+    //display message saying yay you did it
+
+
 
     // add all non-explicit tracks to the newly created playlist using the array of URIs
     fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {

@@ -9,11 +9,13 @@ function Playlists(props) {
     useEffect(() => {
         const user_id = props.user_id;
         const token = props.token;
+  
+        getPlaylists(user_id, token);        
 
-        getPlaylists(user_id, token)
     }, [])
 
    async function getPlaylists(user_id, token) {
+   
         // Make the GET request using user id
         const response = await axios.get(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
             params: {
@@ -26,8 +28,24 @@ function Playlists(props) {
             json: true, 
             
         })
+        console.log(response.data.items)
 
-        setAllUserPlaylists(response.data.items)
+        
+        const removeSpotlessPlaylists = (arr, prop, str) => {
+            return arr.filter(obj => !obj[prop].includes(str));
+        }
+        
+        const dirty = removeSpotlessPlaylists(response.data.items, 'name', '[Clean] ')
+        
+        setAllUserPlaylists(dirty)
+
+        
+        const playlistDivs = document.querySelectorAll(".playlist_wrapper");
+        playlistDivs.forEach(div => {
+            div.classList.add('add_borders')
+        })
+        const scrollDiv = document.querySelector('.scroll_box');
+        scrollDiv.classList.add('add_borders');
   
     }
 
@@ -35,7 +53,7 @@ function Playlists(props) {
         <div className='all_user_playlists'>
             { props.token && allUserPlaylists ? allUserPlaylists.map(playlist => {
            
-                return <div key={playlist.id} className="playlist_wrapper">
+                return <div key={playlist.id} id={playlist.name} className="playlist_wrapper">
                     <aside>
                     <h3>{playlist.name}</h3>
                     <p>created by: {playlist.owner.display_name}</p>

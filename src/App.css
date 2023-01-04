@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Racing+Sans+One&display=swap');
 
+
+/* GLOBAL */
 body {
   font-family: 'Racing Sans One', cursive;
   color: white;
@@ -7,9 +9,31 @@ body {
 
 }
 
+/* class selector */
+.add_borders {
+  border-style: solid;
+  border-width: 1.5px;
+  transition: all .2s ease-in;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.filter_msg {
+  font-size: 30px;
+  color: hotpink;
+}
+
+.auth {
+  border: 2px solid yellowgreen;
+  margin: 5em 2em;
+}
+
 .App {
   text-align: center;
   justify-content: center;
+  margin: 0 auto;
 }
 header div.title {
   max-width: 300px;
@@ -25,10 +49,9 @@ header div.title {
   font-size: 20px;
   margin: 30px auto;
   font-family: 'Racing Sans One';
-  border: 3px solid yellowgreen;
+  border-color: yellowgreen;
   border-radius: 15px;
   padding: 5px 4em;
-  transition: .3s;
 }
 
 #logoutBtn:hover {
@@ -37,12 +60,16 @@ header div.title {
 }
 
 .login_wrapper {
-  border: 2px yellowgreen solid;
-  border-radius: 15px;
   padding: 10px 1em;
   margin: 50px auto; 
   width: 300px;
   transition: .3s;
+  border-radius: 25px;
+}
+
+.loginLink {
+  border-color:yellowgreen;
+  border-radius: 25px;
 }
 
 .login_wrapper:hover {
@@ -61,7 +88,7 @@ header div.title {
 }
 
 div.circle {
-  margin: 25% auto;
+  margin: 20% auto;
   border: 8px solid white;
   border-top: 8px solid hotpink;
   border-radius: 50%;
@@ -84,9 +111,10 @@ div.scroll_box {
   width: fit-content;
   margin: 0 auto;
   border-radius: 20px;
-  border: 2px solid yellowgreen;
+  border-color:yellowgreen;
   overflow: scroll;
-  max-height: 550px;
+  /* max-height: 550px; */
+  max-height: 30em;
   scroll-behavior: smooth;
   padding: 1.5px;
 }
@@ -106,7 +134,7 @@ div.scroll_box {
   justify-content: space-between;
   flex-direction: row;
   text-align: left;
-  border: 2px solid hotpink;
+  border-color: hotpink;
   border-radius: 15px;
 }
 
@@ -131,10 +159,10 @@ div.scroll_box {
   background-color: white;
   color: hotpink;
 }
-
 .playlist_wrapper button.been_filtered {
   background-color: yellowgreen;
   color: black;
+  /* height: 100px; */
 }
 
 .playlist_wrapper p {
@@ -144,10 +172,20 @@ div.scroll_box {
   font-size: 14px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 850px) {
   div.scroll_box {
     overflow: scroll;
-    height: max-content;
+    height: 100em;
     margin: auto;
+  }
+}
+
+@media screen and (max-height: 700px){
+  header div.title {
+    height: 50px;
+  }
+
+  div.scroll_box {
+    height: 24em;
   }
 }

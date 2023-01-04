@@ -68,15 +68,15 @@ function App () {
   return (
     <div className="App">
       <Header />
-      <div className='auth'>
+      <main>
+      <div>
         {!token ?
-          <div className='login_wrapper'>
+          <div className='login_wrapper auth'>
             <a id='loginLink' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}&show_dialogue=true`}>login to spotify</a>
           </div>
           : <div></div>
         }
       </div>
-      <main>
         {!token ?
           <div>
             Please login to begin using this application.
@@ -84,6 +84,7 @@ function App () {
           :
           <div className='my_playlists'>
             <h1>My Playlists</h1>
+            
             {token && userId ?
             <div className='scroll_box'>
               <Playlists user_id={userId} token={token} />
@@ -93,7 +94,7 @@ function App () {
           </div>
         }
         {token ? 
-        <button id='logoutBtn' onClick={logout}>LOGOUT</button> 
+        <button id='logoutBtn' className='add_borders auth' onClick={logout}>LOGOUT</button> 
         :
         <div></div>
         
