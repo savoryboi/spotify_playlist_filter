@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 async function Filter(id, token, user_id, playlist_name) {
 
     const filterBtn = document.getElementById(id + '_btn');
+
+    
     window.localStorage.setItem('spotlessified', id)
     filterBtn.classList.add('been_filtered');
     filterBtn.innerText = `DONE!`;
