@@ -61,7 +61,7 @@ function Playlists(props) {
                     </aside>
                     <button className="filterBtn" id={playlist.id + '_btn'} onClick={() => {
                         Filter(playlist.id, props.token, props.user_id, playlist.name)
-                        }}>FILTER</button>
+                        }}>CLEAN IT!</button>
                     </div>
             } ) : 
             <div className="circle"></div>}
