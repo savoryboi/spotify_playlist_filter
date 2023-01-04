@@ -103,6 +103,11 @@ div.scroll_box {
   color: hotpink;
 }
 
+.playlist_wrapper button.been_filtered {
+  background-color: yellowgreen;
+  color: black;
+}
+
 .playlist_wrapper p {
   color: hotpink;
   font-family: 'Bungee Inline', cursive;

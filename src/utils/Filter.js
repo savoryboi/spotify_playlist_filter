@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 
 async function Filter(id, token, user_id, playlist_name) {
 
-    const [filtering, setFiltering] = useState(true)
+    const filteredBtn = document.getElementById(id + '_btn')
+    filteredBtn.classList.add('been_filtered');
+    filteredBtn.innerText = 'DONE'
+    // const [filtering, setFiltering] = useState(true)
 
     // fetch chosen playlist using the playlist id
     const response = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
@@ -63,10 +66,6 @@ async function Filter(id, token, user_id, playlist_name) {
             "uris": cleanTracksUris
         })
     })
-
-        .then(() => {
-            setFiltering(false)
-        })
 
 
 };

@@ -41,9 +41,8 @@ function Playlists(props) {
                     <p>created by: {playlist.owner.display_name}</p>
                     
                     </aside>
-                    <button className="filterBtn" id={playlist.name + '_filterBtn'} onClick={() => {
+                    <button className="filterBtn" id={playlist.id + '_btn'} onClick={() => {
                         Filter(playlist.id, props.token, props.user_id, playlist.name)
-                        
                         }}>FILTER</button>
                     </div>
             } ) : <div>I dont see anything weirdo</div>}
