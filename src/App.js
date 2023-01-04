@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import { useEffect, useState } from 'react';
 import Playlists from './components/Playlists';
 import Filter from './utils/Filter';
+import { Header } from './components/Header';
 
 function App () {
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
@@ -15,6 +16,7 @@ function App () {
 
   const [filteredTracks, setFilteredTracks] = useState([]);
   const [userId, setUserId] = useState('');
+  const [username, setUsername] = useState('')
 
 
   useEffect(() => {
@@ -54,6 +56,7 @@ function App () {
       .then(data => {
         console.log(data)
         setUserId(data.id)
+        setUsername(data.display_name)
         console.log(userId)
         return userId;
       })
@@ -64,12 +67,13 @@ function App () {
 
   return (
     <div className="App">
+      <Header />
       <div className='auth'>
         {!token ?
           <div className='login_wrapper'>
             <a id='loginLink' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&response_type=${RESPONSE_TYPE}&show_dialogue=true`}>login to spotify</a>
           </div>
-          : <button id='logoutBtn' onClick={logout}>LOGOUT</button>
+          : <div></div>
         }
       </div>
       <main>
@@ -79,15 +83,20 @@ function App () {
           </div>
           :
           <div className='my_playlists'>
-            <h1>My Playlists:</h1>
+            <h1>My Playlists</h1>
             {token && userId ?
             <div className='scroll_box'>
               <Playlists user_id={userId} token={token} />
             </div>
-              : <h3>no playlists yet</h3>
+              : <div className='circle'></div>
             }
           </div>
         }
+        {token ? 
+        <button id='logoutBtn' onClick={logout}>LOGOUT</button> :
+        <div></div>
+        
+      }
       </main>
     </div>
   );

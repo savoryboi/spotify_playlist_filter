@@ -11,13 +11,23 @@ body {
   text-align: center;
   justify-content: center;
 }
+header div.title {
+  max-width: 300px;
+  display: flex;
+  margin: 1em auto;
+  align-items: center;
+  justify-content: center;
+  background-color: hotpink;
+  border-radius: 50%;
+}
 
 #logoutBtn {
-  font-size: 24px;
+  font-size: 20px;
+  margin: 10px auto;
   font-family: 'Racing Sans One';
   border: 3px solid yellowgreen;
   border-radius: 15px;
-  padding: 4px 1em;
+  padding: 4px .5em;
   transition: .3s;
 }
 
@@ -50,27 +60,45 @@ body {
   color: black;
 }
 
+div.circle {
+  margin: 25% auto;
+  border: 8px solid white;
+  border-top: 8px solid hotpink;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
 
 div.scroll_box {
   width: fit-content;
-  padding: 20px;
-  margin: 5px auto;
-  padding: 10px;
+  margin: 0 auto;
   border-radius: 20px;
+  border: 2px solid yellowgreen;
   overflow: scroll;
-  max-height: 500px;
+  max-height: 550px;
   scroll-behavior: smooth;
 }
 
 .my_playlists h1 {
-  font-size: 60px;
+  font-size: 32px;
   color: yellowgreen;
   margin: 0 auto;
 }
 
 .playlist_wrapper {
   max-width: 800px;
-  margin: 1em auto;
+  margin: 0 auto .777em;
   /* height: 120px; */
   padding: 0 0 0 1em;
   display: flex;
@@ -119,5 +147,6 @@ div.scroll_box {
   div.scroll_box {
     overflow: scroll;
     height: max-content;
+    margin: auto;
   }
 }

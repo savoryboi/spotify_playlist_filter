@@ -45,7 +45,8 @@ function Playlists(props) {
                         Filter(playlist.id, props.token, props.user_id, playlist.name)
                         }}>FILTER</button>
                     </div>
-            } ) : <div>I dont see anything weirdo</div>}
+            } ) : 
+            <div className="circle">loading</div>}
         </div>
     )
 }
