@@ -2,15 +2,28 @@
 
 
 /* GLOBAL */
+html,
+body,
+#wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#wrapper {
+  box-shadow: 2px -2px 242px 6px rgba(0, 26, 0, 0.96) inset;
+  -webkit-box-shadow: 2px -2px 242px 6px rgba(0, 26, 0, 0.96) inset;
+  -moz-box-shadow: 2px -2px 242px 6px rgba(0, 26, 0, 0.96) inset;
+  overflow: auto;
+}
+
 body {
   font-family: 'Racing Sans One', cursive;
   color: white;
   background-color: rgb(0, 0, 0);
+
 }
 
- * {
-  transition: .1s;
- }
+html {}
 
 /* class selector */
 .add_borders {
@@ -37,12 +50,13 @@ body {
   text-align: center;
   justify-content: center;
   margin: 0 auto;
-  
+
 }
 
 header {
   margin-top: 2em;
 }
+
 header div.title {
   max-width: 300px;
   display: flex;
@@ -66,28 +80,28 @@ header h3 {
   margin: 30px auto;
   font-family: 'Racing Sans One';
   border-color: yellowgreen;
-  box-shadow: 3px -3px 15px 3px rgba(86,240,14,0.84) inset;
--webkit-box-shadow: 3px -3px 15px 3px rgba(86,240,14,0.84) inset;
--moz-box-shadow: 3px -3px 15px 3px rgba(86,240,14,0.84) inset;
+  box-shadow: 3px -3px 15px 3px rgba(86, 240, 14, 0.84) inset;
+  -webkit-box-shadow: 3px -3px 15px 3px rgba(86, 240, 14, 0.84) inset;
+  -moz-box-shadow: 3px -3px 15px 3px rgba(86, 240, 14, 0.84) inset;
   border-radius: 15px;
   padding: 5px 4em;
 }
 
 #logoutBtn:hover {
   background-color: yellowgreen;
-  color:black;
+  color: black;
 }
 
 .login_wrapper {
   padding: 10px 1em;
-  margin: 50px auto; 
+  margin: 50px auto;
   width: 300px;
   transition: .3s;
   border-radius: 25px;
 }
 
 .loginLink {
-  border-color:yellowgreen;
+  border-color: yellowgreen;
   border-radius: 25px;
 }
 
@@ -120,25 +134,26 @@ div.circle {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 
 
 div.scroll_box {
   width: fit-content;
   margin: 0 auto;
   border-radius: 20px;
-  border-color:yellowgreen;
+  border-color: yellowgreen;
   overflow: scroll;
   /* max-height: 550px; */
   max-height: 30em;
   scroll-behavior: smooth;
   padding: 1.5px;
-  box-shadow: 5px 2px 308px 1px rgba(221,255,152,0.31) inset;
-  -webkit-box-shadow: 5px 2px 308px 1px rgba(221,255,152,0.31) inset;
-  -moz-box-shadow: 5px 2px 308px 1px rgba(221,255,152,0.31) inset;
+  box-shadow: 5px 2px 308px 1px rgba(221, 255, 152, 0.31) inset;
+  -webkit-box-shadow: 5px 2px 308px 1px rgba(221, 255, 152, 0.31) inset;
+  -moz-box-shadow: 5px 2px 308px 1px rgba(221, 255, 152, 0.31) inset;
 }
 
 .my_playlists h1 {
@@ -159,8 +174,8 @@ div.scroll_box {
   border-color: hotpink;
   border-radius: 15px;
   box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.983) inset;
-  -webkit-box-shadow: 5px 2px 42px 1px rgba(253,224,249,0.36) inset;
-  -moz-box-shadow: 5px 2px 42px 1px rgba(253,224,249,0.36) inset;
+  -webkit-box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.36) inset;
+  -moz-box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.36) inset;
 }
 
 .playlist_wrapper h3 {
@@ -174,7 +189,7 @@ div.scroll_box {
 
 .playlist_wrapper button {
   border: none;
-  border-radius:0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
   margin-right: none;
   width: 20%;
   font-family: 'Racing Sans One', cursive;
@@ -185,17 +200,18 @@ div.scroll_box {
   /* box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.983) inset;
   -webkit-box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.983) inset;
   -moz-box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.983) inset; */
-  box-shadow: 2px -2px 69px -17px rgba(253, 224, 249209,0.84) inset;
--webkit-box-shadow: 2px -2px 69px -17px rgba(253, 224, 249209,0.84) inset;
--moz-box-shadow: 2px -2px 69px -17px rgba(253, 224, 249209,0.84) inset;
+  box-shadow: 2px -2px 69px -17px rgba(253, 224, 249209, 0.84) inset;
+  -webkit-box-shadow: 2px -2px 69px -17px rgba(253, 224, 249209, 0.84) inset;
+  -moz-box-shadow: 2px -2px 69px -17px rgba(253, 224, 249209, 0.84) inset;
 
-  
+
 }
 
 .playlist_wrapper button:hover {
   background-color: white;
   color: hotpink;
 }
+
 .playlist_wrapper button.been_filtered {
   background-color: yellowgreen;
   color: black;
@@ -224,7 +240,7 @@ div.scroll_box {
   }
 }
 
-@media screen and (max-height: 740px){
+@media screen and (max-height: 740px) {
   header div.title {
     height: 55px;
   }
