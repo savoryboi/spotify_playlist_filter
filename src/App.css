@@ -45,6 +45,11 @@ header div.title {
   border-radius: 50%;
 }
 
+header h3 {
+  font-family: 'Bungee Inline', cursive;
+  font-size: 16px;
+}
+
 #logoutBtn {
   font-size: 20px;
   margin: 30px auto;
@@ -141,6 +146,10 @@ div.scroll_box {
 .playlist_wrapper h3 {
   font-size: 30px;
   margin: .5em auto;
+}
+
+.playlist_wrapper aside {
+  width: 80%;
 }
 
 .playlist_wrapper button {
