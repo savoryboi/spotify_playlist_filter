@@ -4,6 +4,7 @@ import Filter from "../utils/Filter";
 function Playlist(props) {
     const [allUserPlaylists, setAllUserPlaylists] = useState([]);
 
+    // use props to retrieve user playlists... only done on page load to avoid maxing out request limit
     useEffect(() => {
         const user_id = props.user_id;
         const token = props.token;
@@ -12,8 +13,7 @@ function Playlist(props) {
     }, [])
 
     function getPlaylists(user_id, token) {
-    
-        // Make the GET request
+        // Make the GET request using user id
         fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
             method: 'GET',
             headers: {
