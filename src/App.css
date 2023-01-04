@@ -1,13 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Racing+Sans+One&display=swap');
+
+body {
+  font-family: 'Racing Sans One', cursive;
+  color: white;
+  background-color: rgb(0, 0, 0);
+
+}
+
 .App {
   text-align: center;
   justify-content: center;
 }
 
+#logoutBtn {
+  font-size: 24px;
+  font-family: 'Racing Sans One';
+  border: 3px solid yellowgreen;
+  border-radius: 15px;
+  padding: 4px 1em;
+  transition: .3s;
+}
+
+#logoutBtn:hover {
+  background-color: yellowgreen;
+  color:black;
+}
+
+.login_wrapper {
+  border: 2px yellowgreen solid;
+  border-radius: 15px;
+  padding: 10px 1em;
+  margin: 50px auto; 
+  width: 300px;
+  transition: .3s;
+}
+
+.login_wrapper:hover {
+  background-color: yellowgreen;
+}
+
+.login_wrapper a {
+  font-size: 50px;
+  text-decoration: none;
+  color: yellowgreen;
+  transition: .35s;
+}
+
+.login_wrapper a:hover {
+  color: black;
+}
+
+
+div.scroll_box {
+  width: fit-content;
+  padding: 20px;
+  margin: 5px auto;
+  padding: 10px;
+  border-radius: 20px;
+  overflow: scroll;
+  max-height: 500px;
+  scroll-behavior: smooth;
+}
+
+.my_playlists h1 {
+  font-size: 60px;
+  color: yellowgreen;
+  margin: 0 auto;
+}
+
 .playlist_wrapper {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 1em auto;
+  /* height: 120px; */
+  padding: 0 0 0 1em;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   text-align: left;
+  border: 2px solid hotpink;
+  border-radius: 15px;
+}
+
+.playlist_wrapper h3 {
+  font-size: 30px;
+  margin: .5em auto;
+}
+
+.playlist_wrapper button {
+  border: none;
+  border-radius:0 10px 10px 0;
+  margin-right: none;
+  width: 20%;
+  font-family: 'Racing Sans One', cursive;
+  font-size: 20px;
+  color: black;
+  background-color: hotpink;
+  transition: .3s;
+}
+
+.playlist_wrapper button:hover {
+  background-color: white;
+  color: hotpink;
+}
+
+.playlist_wrapper p {
+  color: hotpink;
+  font-family: 'Bungee Inline', cursive;
+  font-size: small;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 400px) {
+  div.scroll_box {
+    overflow: scroll;
+    height: max-content;
+  }
 }

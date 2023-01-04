@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 
 async function Filter(id, token, user_id, playlist_name) {
 
+    const [filtering, setFiltering] = useState(true)
+
     // fetch chosen playlist using the playlist id
     const response = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
         method: "GET",
         headers: {
-            'Authorization': 'Bearer ' + token, 
-            'Content-Type': 'application/json', 
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
             'Content-Length': 92
         },
         json: true
@@ -15,7 +17,7 @@ async function Filter(id, token, user_id, playlist_name) {
 
     // turn response into json
     const data = await response.json();
-    
+
     console.log(data)
 
     // dig onoe level deeper into reponse object
@@ -32,11 +34,11 @@ async function Filter(id, token, user_id, playlist_name) {
 
     // post request to create a new playlist 
     const createNewPlaylist = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
-        method: 'POST', 
+        method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + token
-        }, 
-        body: JSON.stringify({name: 'CLEAN: ' + playlist_name})
+        },
+        body: JSON.stringify({ name: '[Clean] ' + playlist_name })
     })
 
     const jsonPlaylistData = await createNewPlaylist.json()
@@ -44,7 +46,7 @@ async function Filter(id, token, user_id, playlist_name) {
 
     // store newly created playlist id and name for when we add the non-explicit tracks to this playlist
     const newPlaylist = {
-        id: jsonPlaylistData.id, 
+        id: jsonPlaylistData.id,
         name: jsonPlaylistData.name
     };
 
@@ -53,14 +55,18 @@ async function Filter(id, token, user_id, playlist_name) {
 
     // add all non-explicit tracks to the newly created playlist using the array of URIs
     fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
-            method: 'POST', 
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }, 
-            body: JSON.stringify({
-                "uris": cleanTracksUris
-              })
-            })
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({
+            "uris": cleanTracksUris
+        })
+    })
+
+        .then(() => {
+            setFiltering(false)
+        })
 
 
 };

@@ -1,9 +1,10 @@
 import './App.css';
+import React, {Component} from 'react';
 import { useEffect, useState } from 'react';
-import Playlist from './components/Playlist';
+import Playlists from './components/Playlists';
 import Filter from './utils/Filter';
 
-function App() {
+function App () {
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
   const RESPONSE_TYPE = 'token';
   const SCOPE = 'playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public';
@@ -47,8 +48,7 @@ function App() {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + token
-      }, 
-      json: true
+      }
     })
       .then(res => res.json())
       .then(data => {
@@ -61,7 +61,6 @@ function App() {
         console.log(err)
       })
   }
-
 
   return (
     <div className="App">
@@ -82,7 +81,9 @@ function App() {
           <div className='my_playlists'>
             <h1>My Playlists:</h1>
             {token && userId ?
-              <Playlist user_id={userId} token={token} />
+            <div className='scroll_box'>
+              <Playlists user_id={userId} token={token} />
+            </div>
               : <h3>no playlists yet</h3>
             }
           </div>
