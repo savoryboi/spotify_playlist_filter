@@ -157,6 +157,7 @@ div.scroll_box {
   box-shadow: 5px 2px 308px 1px rgba(221, 255, 152, 0.31) inset;
   -webkit-box-shadow: 5px 2px 308px 1px rgba(221, 255, 152, 0.31) inset;
   -moz-box-shadow: 5px 2px 308px 1px rgba(221, 255, 152, 0.31) inset;
+  overflow-x: hidden;
 }
 
 .my_playlists h1 {
@@ -196,10 +197,11 @@ div.scroll_box {
   margin-right: none;
   width: 20%;
   font-family: 'Racing Sans One', cursive;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   background-color: hotpink;
   transition: .3s;
+  text-align: center;
   /* box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.983) inset;
   -webkit-box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.983) inset;
   -moz-box-shadow: 5px 2px 42px 1px rgba(253, 224, 249, 0.983) inset; */
@@ -218,7 +220,6 @@ div.scroll_box {
 .playlist_wrapper button.been_filtered {
   background-color: yellowgreen;
   color: black;
-  /* height: 100px; */
 }
 
 .playlist_wrapper p {
@@ -230,8 +231,14 @@ div.scroll_box {
 @media screen and (max-width: 850px) {
   div.scroll_box {
     overflow: scroll;
+    overflow-x: hidden;
     height: 100em;
     margin: auto;
+  }
+
+  div.scroll_box button {
+    text-align: center;
+    font-size: 16px;
   }
 
   .playlist_wrapper h3 {
