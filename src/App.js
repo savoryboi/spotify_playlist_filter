@@ -9,8 +9,8 @@ function App () {
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
   const RESPONSE_TYPE = 'token';
   const SCOPE = 'playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public';
-  const CLIENT_ID = process.env.CLIENT_ID;
-  const REDIRECT_URI = process.env.REDIRECT_URI;
+  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+  const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
   const [token, setToken] = useState("");
 
