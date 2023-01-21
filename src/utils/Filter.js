@@ -1,10 +1,11 @@
+import { all } from 'axios';
 import { useState, useEffect } from 'react';
 
 async function Filter(id, token, user_id, playlist_name) {
 
     const filterBtn = document.getElementById(id + '_btn');
 
-    
+
     window.localStorage.setItem('spotlessified', id)
     filterBtn.classList.add('been_filtered');
     filterBtn.innerText = `DONE!`;
@@ -32,6 +33,27 @@ async function Filter(id, token, user_id, playlist_name) {
         return track.track;
     });
 
+
+
+    const getCleanVersions = (tracks) => {
+
+       tracks.forEach(async (track) => {
+        const search  = await fetch(`https://api.spotify.com/v1/search?q=${track.name}/type=track`, {
+            method: "GET", 
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json',
+                'Content-Length': 92
+            },
+            json: true
+        })
+        const data = await search.json()
+        console.log(data)
+       })
+    }
+
+    getCleanVersions(allTracks);
+
     // filter out all explicit tracks in the array
     const filtered = allTracks.filter(track => track.explicit === false);
 
@@ -58,15 +80,15 @@ async function Filter(id, token, user_id, playlist_name) {
 
 
     // add all non-explicit tracks to the newly created playlist using the array of URIs
-    fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-        body: JSON.stringify({
-            "uris": cleanTracksUris
-        })
-    })
+    // fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Authorization': 'Bearer ' + token
+    //     },
+    //     body: JSON.stringify({
+    //         "uris": cleanTracksUris
+    //     })
+    // })
 
 
 };
