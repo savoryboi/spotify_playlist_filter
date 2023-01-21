@@ -32,16 +32,6 @@ async function Filter(id, token, user_id, playlist_name) {
         return track.track;
     });
 
-    const getCleanVersion = (arr) => {
-        arr.forEach(track => {
-            if(track.explicit === true){
-                fetch(`https://api.spotify.com/v1/search?q=${track.name}&type=track`)
-                .then(res => res.json())
-                .then(data => console.log(data.items))
-            }
-        })
-    }
-
     // filter out all explicit tracks in the array
     const filtered = allTracks.filter(track => track.explicit === false);
 
