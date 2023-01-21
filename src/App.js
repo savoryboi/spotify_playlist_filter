@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import Playlists from './components/Playlists';
 import Filter from './utils/Filter';
 import { Header } from './components/Header';
+import dotenv from 'dotenv';
 
 function App () {
+  dotenv.config()
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
   const RESPONSE_TYPE = 'token';
   const SCOPE = 'playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public';
