@@ -23,9 +23,7 @@ async function Filter(id, token, user_id, playlist_name) {
     // turn response into json
     const data = await response.json();
 
-    console.log(data)
-
-    // dig onoe level deeper into reponse object
+    // dig one level deeper into reponse object
     const unfilteredPlaylist = data.items;
 
     // now that we are into data.items we are in the array of all playlist tracks 
@@ -33,6 +31,16 @@ async function Filter(id, token, user_id, playlist_name) {
     const allTracks = unfilteredPlaylist.map(track => {
         return track.track;
     });
+
+    const getCleanVersion = (arr) => {
+        arr.forEach(track => {
+            if(track.explicit === true){
+                fetch(`https://api.spotify.com/v1/search?q=${track.name}&type=track`)
+                .then(res => res.json())
+                .then(data => console.log(data.items))
+            }
+        })
+    }
 
     // filter out all explicit tracks in the array
     const filtered = allTracks.filter(track => track.explicit === false);
@@ -47,7 +55,6 @@ async function Filter(id, token, user_id, playlist_name) {
     })
 
     const jsonPlaylistData = await createNewPlaylist.json()
-    console.log(jsonPlaylistData);
 
     // store newly created playlist id and name for when we add the non-explicit tracks to this playlist
     const newPlaylist = {
@@ -57,8 +64,6 @@ async function Filter(id, token, user_id, playlist_name) {
 
     // create an array containing all the URIs for tracks that will be added to new clean playlist
     const cleanTracksUris = filtered.map(track => track.uri);
-
-    //display message saying yay you did it
 
 
 

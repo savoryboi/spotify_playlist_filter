@@ -28,8 +28,6 @@ function Playlists(props) {
             json: true, 
             
         })
-        console.log(response.data.items)
-
         
         const removeSpotlessPlaylists = (arr, prop, str) => {
             return arr.filter(obj => !obj[prop].includes(str));
