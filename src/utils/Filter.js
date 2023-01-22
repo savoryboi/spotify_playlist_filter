@@ -36,9 +36,11 @@ async function Filter(id, token, user_id, playlist_name) {
 
 
     const getCleanVersions = (tracks) => {
+        const clean_versions = [];
 
+        // for each explicit track in the playlist, make a search requets and find CLEAN track with matching name and artist
        tracks.forEach(async (track) => {
-        const search  = await fetch(`https://api.spotify.com/v1/search?q=${track.name}/type=track`, {
+        const search  = await fetch(`https://api.spotify.com/v1/search?q=${track.name}&type=track`, {
             method: "GET", 
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -48,14 +50,23 @@ async function Filter(id, token, user_id, playlist_name) {
             json: true
         })
         const data = await search.json()
-        console.log(data)
+        const results = data.tracks.items;
+        
+        for(let i = 0; i < results.length; i++) {
+            if(results[i].album.name === track.album.name && results[i].name === track.name && results[i].artists[0].name  === track.artists[0].name && results[i].explicit === false){
+                clean_versions.push(results[i])
+            }
+        }
        })
+       console.log(clean_versions)
+       return clean_versions;
     }
 
-    getCleanVersions(allTracks);
-
+    
     // filter out all explicit tracks in the array
     const filtered = allTracks.filter(track => track.explicit === false);
+    const explicit = allTracks.filter(track => track.explicit === true);
+    const spotless = getCleanVersions(explicit)
 
     // post request to create a new playlist 
     const createNewPlaylist = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
@@ -76,19 +87,21 @@ async function Filter(id, token, user_id, playlist_name) {
 
     // create an array containing all the URIs for tracks that will be added to new clean playlist
     const cleanTracksUris = filtered.map(track => track.uri);
+    const spotlessTrackUris = spotless.map(track => track.uri);
+    const allUris = cleanTracksUris.concat(spotlessTrackUris);
 
 
 
     // add all non-explicit tracks to the newly created playlist using the array of URIs
-    // fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Authorization': 'Bearer ' + token
-    //     },
-    //     body: JSON.stringify({
-    //         "uris": cleanTracksUris
-    //     })
-    // })
+    fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({
+            "uris": allUris
+        })
+    })
 
 
 };
