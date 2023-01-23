@@ -53,7 +53,7 @@ async function Filter(id, token, user_id, playlist_name) {
         const results = data.tracks.items;
         
         for(let i = 0; i < results.length; i++) {
-            if(results[i].album.name === track.album.name && results[i].name === track.name && results[i].artists[0].name  === track.artists[0].name && results[i].explicit === false){
+            if(results[i].name === track.name && results[i].artists[0].name  === track.artists[0].name && results[i].explicit === false){
                 clean_versions.push(results[i])
             }
         }
