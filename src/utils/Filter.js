@@ -58,7 +58,7 @@ async function Filter(id, token, user_id, playlist_name) {
             }
         }
        })
-       console.log(clean_versions)
+    //    console.log(clean_versions);
        return clean_versions;
     }
 
@@ -67,6 +67,7 @@ async function Filter(id, token, user_id, playlist_name) {
     const filtered = allTracks.filter(track => track.explicit === false);
     const explicit = allTracks.filter(track => track.explicit === true);
     const spotless = getCleanVersions(explicit);
+    console.log(spotless)
 
     // post request to create a new playlist 
     const createNewPlaylist = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
@@ -86,10 +87,10 @@ async function Filter(id, token, user_id, playlist_name) {
     };
 
     // create an array containing all the URIs for tracks that will be added to new clean playlist
-    const cleanTracksUris = filtered.map(track => track.uri);
+    const cleanTrackUris = filtered.map(track => track.uri);
     const spotlessTrackUris = spotless.map(track => track.uri);
-    const allUris = cleanTracksUris.concat(spotlessTrackUris);
-
+    const allUris = spotlessTrackUris.concat(cleanTrackUris);
+    console.log(allUris)
 
 
     // add all non-explicit tracks to the newly created playlist using the array of URIs
