@@ -66,7 +66,7 @@ async function Filter(id, token, user_id, playlist_name) {
     // filter out all explicit tracks in the array
     const filtered = allTracks.filter(track => track.explicit === false);
     const explicit = allTracks.filter(track => track.explicit === true);
-    const spotless = getCleanVersions(explicit)
+    const spotless = getCleanVersions(explicit);
 
     // post request to create a new playlist 
     const createNewPlaylist = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
